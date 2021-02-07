@@ -16,6 +16,7 @@ async def on_message(message):
     # 送信者がBotだったら無視
     if message.author.bot:
         return
+    
     if message.content == '!hi':
         await message.channel.send('課長と恋の実験室')
 

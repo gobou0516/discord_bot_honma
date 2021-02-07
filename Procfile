@@ -1,0 +1,1 @@
+discord_bot_honma: python bot.py
