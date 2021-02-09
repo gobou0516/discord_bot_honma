@@ -19,17 +19,17 @@ async def on_message(message):
         return
 
     if message.content == '!hi':
-        await message.channel.send('気づかなかった？')
+        await message.channel.send('課長と恋の実験室')
 
-    # 接続
+    # 接続 & 再生
     if message.content == '!connect':
         if message.author.voice.channel is not None:
             vcc = message.author.voice.channel
             await vcc.connect()
 
-            # 再生
+            voice_client = message.guild.voice_client
             source = discord.FFmpegPCMAudio("課長と恋の実験室.mp3")
-            vcc.play(source)
+            voice_client.play(source)
 
     # 切断
     if message.content == '!disconnect':
