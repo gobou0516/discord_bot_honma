@@ -2,13 +2,15 @@ import discord
 import os
 
 TOKEN = os.environ.get("DISCORD_TOKEN_HONMA")
+START_CHANNEL_ID = 724035318868869221
 
 client = discord.Client()
 
 # 起動時の動作
 @client.event
 async def on_ready():
-    print('本間課長が出社しました')
+    channel = client.get_channel(CHANNEL_ID)
+    await channel.send('本間課長が出社しました')
 
 # メッセージ受信時の処理
 @client.event
