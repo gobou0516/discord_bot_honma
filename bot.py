@@ -1,10 +1,14 @@
 import discord
 import os
 
+from response import Response
+
 TOKEN = os.environ.get("DISCORD_TOKEN_HONMA")
 START_CHANNEL_ID = 724035318868869221 # 雑談総合_テキスト
 
 client = discord.Client()
+
+response = Response()
 
 # 起動時の動作
 @client.event
@@ -16,12 +20,14 @@ async def on_ready():
 @client.event
 async def on_message(message):
     global vcc
+
     # 送信者がBotだったら無視
     if message.author.bot:
         return
-
-    if message.content == '!hi':
-        await message.channel.send('課長と恋の実験室')
+    
+    # メンションを送られたらランダムに返信
+    if client.user in message.mentions:
+        await response.on_message(message)
 
     # 接続 & 再生
     if message.content == '!jikken':
