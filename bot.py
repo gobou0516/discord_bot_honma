@@ -9,7 +9,7 @@ client = discord.Client()
 # 起動時の動作
 @client.event
 async def on_ready():
-    channel = client.get_channel(CHANNEL_ID)
+    channel = client.get_channel(START_CHANNEL_ID)
     await channel.send('本間課長が出社しました')
 
 # メッセージ受信時の処理
