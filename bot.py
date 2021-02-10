@@ -2,7 +2,7 @@ import discord
 import os
 
 TOKEN = os.environ.get("DISCORD_TOKEN_HONMA")
-START_CHANNEL_ID = 724035318868869221
+START_CHANNEL_ID = 724035318868869221 # 雑談総合_テキスト
 
 client = discord.Client()
 
