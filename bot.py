@@ -4,7 +4,6 @@ import os
 from response import Response
 
 TOKEN = os.environ.get("DISCORD_TOKEN_HONMA")
-START_CHANNEL_ID = 724035318868869221 # 雑談総合_テキスト
 
 client = discord.Client()
 
@@ -13,8 +12,7 @@ response = Response()
 # 起動時の動作
 @client.event
 async def on_ready():
-    channel = client.get_channel(START_CHANNEL_ID)
-    await channel.send('本間課長が出社しました')
+    print('本間課長が出社しました')
 
 # メッセージ受信時の処理
 @client.event
