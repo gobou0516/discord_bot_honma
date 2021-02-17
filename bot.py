@@ -1,13 +1,24 @@
 import discord
 import os
-
 from response import Response
+from discord.ext import tasks
+from datetime import datetime
 
 TOKEN = os.environ.get("DISCORD_TOKEN_HONMA")
+CHANNEL_ID = 784065989783977991
 
 client = discord.Client()
 
 response = Response()
+
+# 60秒に1回ループ
+@tasks.loop(seconds = 60)
+async def loop():
+    now_hour = datetime.now().strftime('%H')
+    now_minute = datetime.now().strftime('%M')
+    if now_minute == '00':
+        channel = client.get_channel(CHANNEL_ID)
+        await channel.send('【時報テスト】' + now_hour + '時です')
 
 # 起動時の動作
 @client.event
@@ -48,5 +59,7 @@ async def on_message(message):
     if message.content == '!bye':
         voice_client = message.guild.voice_client
         await voice_client.disconnect()
+
+loop.start()
     
 client.run(TOKEN)
