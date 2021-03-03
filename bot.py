@@ -1,6 +1,7 @@
 import discord
 import os
 from response import Response
+from play import Play
 from discord.ext import tasks
 from datetime import datetime
 
@@ -9,6 +10,7 @@ TOKEN = os.environ.get("DISCORD_TOKEN_HONMA")
 client = discord.Client()
 
 response = Response()
+play = Play()
 
 # 60秒に1回ループ
 #@tasks.loop(seconds = 60)
@@ -36,22 +38,10 @@ async def on_message(message):
         await response.on_message(message)
 
     if message.content == '!jikken':
-        if message.author.voice.channel is not None:
-            vcc = message.author.voice.channel
-            await vcc.connect()
-
-            voice_client = message.guild.voice_client
-            source = discord.FFmpegPCMAudio("music/課長と恋の実験室.mp3")
-            voice_client.play(source)
+        await play.on_message(message, "課長と恋の実験室.mp3")
     
     if message.content == '!doctor':
-        if message.author.voice.channel is not None:
-            vcc = message.author.voice.channel
-            await vcc.connect()
-
-            voice_client = message.guild.voice_client
-            source = discord.FFmpegPCMAudio("music/ドクター野獣先輩.mp3")
-            voice_client.play(source)
+        await play.on_message(message, "ドクター野獣先輩.mp3")
     
     # 再度再生
     #if message.content == '!again':
