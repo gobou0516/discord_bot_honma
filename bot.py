@@ -41,7 +41,7 @@ async def on_message(message):
             await vcc.connect()
 
             voice_client = message.guild.voice_client
-            source = discord.FFmpegPCMAudio("src/課長と恋の実験室.mp3")
+            source = discord.FFmpegPCMAudio("music/課長と恋の実験室.mp3")
             voice_client.play(source)
     
     if message.content == '!doctor':
@@ -50,7 +50,7 @@ async def on_message(message):
             await vcc.connect()
 
             voice_client = message.guild.voice_client
-            source = discord.FFmpegPCMAudio("src/ドクター野獣先輩.mp3")
+            source = discord.FFmpegPCMAudio("music/ドクター野獣先輩.mp3")
             voice_client.play(source)
     
     # 再度再生
