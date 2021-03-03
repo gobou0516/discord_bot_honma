@@ -35,22 +35,30 @@ async def on_message(message):
     if client.user in message.mentions:
         await response.on_message(message)
 
-    # 接続 & 再生
     if message.content == '!jikken':
         if message.author.voice.channel is not None:
             vcc = message.author.voice.channel
             await vcc.connect()
 
             voice_client = message.guild.voice_client
-            source = discord.FFmpegPCMAudio("課長と恋の実験室.mp3")
+            source = discord.FFmpegPCMAudio("src/課長と恋の実験室.mp3")
+            voice_client.play(source)
+    
+    if message.content == '!doctor':
+        if message.author.voice.channel is not None:
+            vcc = message.author.voice.channel
+            await vcc.connect()
+
+            voice_client = message.guild.voice_client
+            source = discord.FFmpegPCMAudio("src/ドクター野獣先輩.mp3")
             voice_client.play(source)
     
     # 再度再生
-    if message.content == '!again':
-        voice_client = message.guild.voice_client
-        source = discord.FFmpegPCMAudio("課長と恋の実験室.mp3")
-        voice_client.stop()
-        voice_client.play(source)
+    #if message.content == '!again':
+        #voice_client = message.guild.voice_client
+        #source = discord.FFmpegPCMAudio("src/課長と恋の実験室.mp3")
+        #voice_client.stop()
+        #voice_client.play(source)
 
     # 切断
     if message.content == '!bye':
