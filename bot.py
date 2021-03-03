@@ -35,18 +35,12 @@ async def on_message(message):
     if client.user in message.mentions:
         await response.on_message(message)
 
+    # 音楽再生
     if message.content == '!jikken':
         await play.on_message(message, "課長と恋の実験室.mp3")
     
     if message.content == '!doctor':
         await play.on_message(message, "ドクター野獣先輩.mp3")
-    
-    # 再度再生
-    #if message.content == '!again':
-        #voice_client = message.guild.voice_client
-        #source = discord.FFmpegPCMAudio("src/課長と恋の実験室.mp3")
-        #voice_client.stop()
-        #voice_client.play(source)
 
     # 切断
     if message.content == '!bye':

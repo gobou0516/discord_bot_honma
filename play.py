@@ -8,6 +8,7 @@ class Play:
             if not voice_client:
                 vcc = message.author.voice.channel
                 await vcc.connect()
+                voice_client = message.guild.voice_client
             else:
                 voice_client.stop()
             
