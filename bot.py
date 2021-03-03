@@ -27,8 +27,6 @@ async def on_ready():
 # メッセージ受信時の処理
 @client.event
 async def on_message(message):
-    global vcc
-
     # 送信者がBotだったら無視
     if message.author.bot:
         return
